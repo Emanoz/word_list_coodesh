@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "379818478752",
+    "project_id": "wordlist-coodesh-app",
+    "storage_bucket": "wordlist-coodesh-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:379818478752:android:ebf5f22ed3d5901c670dc5",
+        "android_client_info": {
+          "package_name": "com.coodesh.wordlist.app.word_list_coodesh_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2IlRnw6epk95ob6VyvXbDXzpKjkzzAcY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

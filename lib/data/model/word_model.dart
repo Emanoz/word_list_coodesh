@@ -18,7 +18,7 @@ class WordModel {
     this.meanings,
     this.isFavourite = false,
     this.hasBeenVisited = false,
-    this.uid = const [],
+    required this.uid,
   });
 
   WordModel.fromJson(Map<String, dynamic> json)

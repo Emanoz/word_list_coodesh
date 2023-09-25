@@ -12,14 +12,14 @@ class FirebaseManager {
     );
   }
 
-  void setAuthListeners({required VoidCallback onSuccess, required VoidCallback onError}) {
+  void setAuthListeners({required Function(bool isLogged) onSuccess, required VoidCallback onError}) {
     FirebaseAuth.instance
         .authStateChanges()
-        .listen((User? user) {
+        .listen((User? user) async {
       if (user == null) {
         onError();
       } else {
-        onSuccess();
+        onSuccess((await user.getIdToken()) != null);
       }
     });
 

@@ -12,7 +12,7 @@ class WordCollection {
     required this.pronunciation,
     this.isFavourite = false,
     this.hasBeenVisited = false,
-    this.uid = const [],
+    required this.uid,
   });
 
   final Id id;

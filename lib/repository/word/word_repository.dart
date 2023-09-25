@@ -81,8 +81,12 @@ class WordRepository implements WordRepositoryInterface {
         uid = FirebaseAuth.instance.currentUser?.uid;
       }
 
-      var cached =
-          await IsarDatabase.isarDb.wordCollections.filter().uidElementContains(uid!).hasBeenVisitedEqualTo(true).idEqualTo(word.id).findFirst();
+      var cached = await IsarDatabase.isarDb.wordCollections
+          .filter()
+          .uidElementContains(uid!)
+          .hasBeenVisitedEqualTo(true)
+          .idEqualTo(word.id)
+          .findFirst();
 
       if (cached == null) {
         var response = await http.get(Uri.parse('https://wordsapiv1.p.rapidapi.com/words/${word.word}'), headers: {
@@ -94,10 +98,10 @@ class WordRepository implements WordRepositoryInterface {
 
         var object = WordModel.fromJson(jsonDecode(utf8.decode(response.bodyBytes)));
         object.id = word.id;
-        object.hasBeenVisited = collection!.hasBeenVisited;
-        object.isFavourite = collection.isFavourite;
+        object.hasBeenVisited = true;
+        object.isFavourite = collection!.isFavourite;
 
-        if(!object.uid.contains(uid)) {
+        if (!object.uid.contains(uid)) {
           object.uid.add(uid);
         }
 

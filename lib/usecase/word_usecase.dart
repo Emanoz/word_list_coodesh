@@ -62,7 +62,6 @@ class WordUseCase extends WordUseCaseInterface {
   Future<WordModel> getWordDetail(WordModel word) async {
     try {
       var words = await repository.getWordDetail(word);
-      await _updateHistoryWord(word);
       return words;
     } catch (e) {
       rethrow;
@@ -71,16 +70,15 @@ class WordUseCase extends WordUseCaseInterface {
     }
   }
 
-  Future<void> _updateHistoryWord(WordModel word) async {
+  @override
+  Future<WordModel?> getWordById(int id) async {
     try {
-      if (!word.hasBeenVisited) {
-        word.hasBeenVisited = true;
-
-        word = _checkUserState(word);
-        await repository.updateWord(word.toCollection());
-      }
-    } catch (e) {
+      var word = await repository.getWordById(id);
+      return word?.toModel();
+    } catch(e) {
       rethrow;
+    } finally {
+
     }
   }
 

@@ -20,4 +20,5 @@ abstract class WordUseCaseInterface {
   Future<void> getAllByFavourite();
   Future<void> updateFavouriteWord(int id, bool update);
   Future<WordModel> getWordDetail(WordModel word);
+  Future<WordModel?> getWordById(int id);
 }

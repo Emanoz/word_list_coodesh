@@ -5,13 +5,16 @@ class BaseButton extends StatelessWidget {
   const BaseButton({
     super.key,
     required this.text,
+    required this.onTap,
   });
 
   final String text;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      onTap: onTap,
       child: Container(
         width: 120.0,
         padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),

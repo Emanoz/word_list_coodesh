@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:word_list_coodesh_app/ui/word_detail_page.dart';
+import 'package:word_list_coodesh_app/ui/word/word_detail_page.dart';
 
 class WordTile extends StatelessWidget {
   final String word;
+  final VoidCallback onTap;
 
-  const WordTile({super.key, required this.word});
+  const WordTile({super.key, required this.word, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (_) => WordDetailPage(),
-        ),
-      ),
+      onTap: onTap,
       splashColor: const Color(0x334AF8AA),
       child: Container(
         decoration: BoxDecoration(

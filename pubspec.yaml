@@ -12,11 +12,15 @@ dependencies:
   flutter:
     sdk: flutter
   mobx: ^2.2.0
-  flutter_mobx: ^2.0.6+5
+  flutter_mobx: ^2.1.0
+  google_fonts: ^6.1.0
+  firebase_auth: ^4.10.0
+  isar: ^3.1.0+1
+  isar_flutter_libs: ^3.1.0+1
+  path_provider: ^2.1.1
+  http: ^1.1.0
+  flutter_tts: ^3.8.3
   firebase_core: ^2.16.0
-  cloud_firestore: ^4.9.2
-  firebase_crashlytics: ^3.3.6
-  google_fonts: ^6.0.0
 
 dev_dependencies:
   flutter_test:
@@ -25,8 +29,11 @@ dev_dependencies:
   mobx_codegen: ^2.4.0
 
   flutter_lints: ^2.0.3
+  isar_generator: ^3.1.0+1
 
 flutter:
+  assets:
+    - wordsfile/words_dictionary.json
 
   uses-material-design: true
 

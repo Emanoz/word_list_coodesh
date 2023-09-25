@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:word_list_coodesh_app/ui/favourite_page.dart';
-import 'package:word_list_coodesh_app/ui/word_list_page.dart';
+import 'package:word_list_coodesh_app/repository/word/word_repository_interface.dart';
+import 'package:word_list_coodesh_app/ui/favourite/favourite_page.dart';
+import 'package:word_list_coodesh_app/ui/word/state/wordlist_state.dart';
+import 'package:word_list_coodesh_app/ui/word/word_list_page.dart';
+import 'package:word_list_coodesh_app/usecase/word_usecase_interface.dart';
 
 import '../utils/base_state_controller/state_controller.dart';
 
@@ -15,11 +18,32 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   StateController<int> pageIndex = StateController(value: 0);
-  late List<Widget> pages;
+  late List<Widget> pages = [
+    WordListPage(
+      key: const Key('wordslist'),
+      usecase: WordUseCaseInterface.factory(
+        repository: WordRepositoryInterface.factory(),
+        controller: WordListState(),
+      ),
+    ),
+    WordListPage(
+      key: const Key('wordshistory'),
+      hasBeenVisited: true,
+      usecase: WordUseCaseInterface.factory(
+        repository: WordRepositoryInterface.factory(),
+        controller: WordListState(),
+      ),
+    ),
+    FavouritePage(
+      usecase: WordUseCaseInterface.factory(
+        repository: WordRepositoryInterface.factory(),
+        controller: WordListState(),
+      ),
+    ),
+  ];
 
   @override
   void initState() {
-    pages = [const WordListPage(), const WordListPage(), const FavouritePage()];
     super.initState();
   }
 

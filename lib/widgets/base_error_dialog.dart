@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class BaseErrorDialog extends StatelessWidget {
-  const BaseErrorDialog({super.key});
+  const BaseErrorDialog({super.key, this.message});
+
+  final String? message;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,7 @@ class BaseErrorDialog extends StatelessWidget {
               ),
             ),
             Text(
-              'Um erro ocorreu ao buscar pela palavra selecionada\nCertifique-se de que essa palavra existe e que você possui conexão com a internet.',
+              message ?? 'Um erro ocorreu ao buscar pela palavra selecionada\nCertifique-se de que essa palavra existe e que você possui conexão com a internet.',
               textAlign: TextAlign.center,
               style: GoogleFonts.nunito(
                 fontSize: 16.0,
